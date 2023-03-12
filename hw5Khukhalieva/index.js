@@ -1,90 +1,132 @@
 'use strict';
 
-const userOperation =
-    prompt('Hello, choose a math operation: +, -, *, /, cos, sin, pow.',
-        '+, -, *, /, cos, sin, pow');
+let userOperation;
+const cos = 'cos';
+const sin = 'sin';
+const pow = 'pow';
+const sum = '+';
+const div = '-';
+const mult = '*';
+const diff = '/';
+const history = 'history';
+let userHistory = [];
+let a;
+let x;
+let y;
+let userNumberOne;
+let userNumberTwo;
+let result;
+let endUserChoice = true;
 
-let userNumberOne = '';
-let userNumberTwo = '';
-let result = '';
-let isNotNull = '';
-let isNumber = '';
-let isValidInput = '';
+while (endUserChoice)    {
+    do {
+        a = prompt('Hello, choose a math operation: +, -, *, /, cos, sin, pow.',
+            '+, -, *, /, cos, sin, pow');
+        userOperation = String(a);
 
-switch ( userOperation ) {
-    case 'cos' :
-            userNumberOne = prompt('Enter a number.', '');
+    }   while ( userOperation !== cos && userOperation !== sin && userOperation !== pow && userOperation !==
+        sum && userOperation !== div && userOperation !== mult && userOperation !== diff && userOperation !== ''
+        );
 
-            if (userNumberOne !== null && userNumberOne !== '' && userNumberOne !== String) {
+    do {
+        x = +prompt('Enter a number.', '0');
+        userNumberOne = +x;
 
-                    userNumberOne = Number(userNumberOne);
-                    result = Math.cos(userNumberOne);
+    }   while ( userNumberOne !== +userNumberOne || userNumberOne === '' );
 
-                    if (result === Number.isNaN(NaN)) {
-                        alert('Try again, enter a number.');
-                    } else {
-                        console.log(`${result}`);
-                        alert(`${result}`);
-                    }
+    switch ( userOperation ) {
+        case 'cos' :
+            result = Math.cos(userNumberOne);
+            console.log(`${result}`);
+            alert(`${result}`);
+            userHistory.push(`${result}`);
+            break;
 
-                } else {
-                    alert('Try again, enter a number.');
-                } break;
+        case 'sin' :
+            result = Math.sin(userNumberOne);
+            console.log(`${result}`);
+            alert(`${result}`);
+            userHistory.push(`${result}`);
+            break;
 
+        case 'pow' :
+            do {
+                y = +prompt('Enter a number.', '0');
+                userNumberTwo = +y;
 
+            }   while ( userNumberTwo !== +userNumberTwo || userNumberTwo === '' );
 
+            result = Math.pow(userNumberOne, userNumberTwo);
+            console.log(`${result}`);
+            alert(`${result}`);
+            userHistory.push(`${result}`);
+            break;
 
+        case '+' :
+            do {
+                y = +prompt('Enter a number.', '0');
+                userNumberTwo = +y;
 
-    /*case 'sin' :
-        const numberSin = prompt('Choose a number.', '');
-        const sin = Math.sin( +numberSin )
-        console.log( sin );
-        alert (`Sin ${numberSin} = ${sin} radian`); break;
+            }   while ( userNumberTwo !== +userNumberTwo || userNumberTwo === '' );
 
-    case '+' :
-        const numberSum = prompt('Choose a number.', '');
-        const numberSum1 = prompt('Choose a number again.', '');
-        const sum = ( +numberSum + +numberSum1 );
-        console.log( sum );
-        alert (`Sum: ${numberSum} + ${numberSum1} = ${sum}`); break;
+            result = userNumberOne + userNumberTwo;
+            console.log(`${result}`);
+            alert(`${result}`);
+            userHistory.push(`${result}`);
+            break;
 
-    case '-' :
-        const numberDif = prompt('Choose a number.', '');
-        const numberDif1 = prompt('Choose a number again.', '');
-        const diff = ( +numberDif - +numberDif1 );
-        console.log( diff );
-        alert (`Diff: ${numberDif} + ${numberDif1} = ${diff}`); break;
+        case '-' :
+            do {
+                y = +prompt('Enter a number.', '0');
+                userNumberTwo = +y;
 
-    case '*' :
-        const numberMul = prompt('Choose a number.', '');
-        const numberMul1 = prompt('Choose a number again.', '');
-        const mult = ( +numberMul * +numberMul1 );
-        console.log( mult );
-        alert (`Mult: ${numberMul} * ${numberMul1} = ${mult}`); break;
+            }   while ( userNumberTwo !== +userNumberTwo || userNumberTwo === '' );
 
-    case '/' :
-        const numberDiv = +prompt('Choose a number.', '');
-        const numberDiv1 = +prompt('Choose a number again.', '');
-            switch ( numberDiv1 ) {
-                case 0:
-                    alert   ( `Сan't divide by zero`); break;
-                default:
-                    const div = ( +numberDiv / +numberDiv1 );
-                    console.log ( div );
-                    alert (`Div: ${numberDiv} / ${numberDiv1} = ${div}`);
-            }
-        break;
+            result = userNumberOne - userNumberTwo;
+            console.log(`${result}`);
+            alert(`${result}`);
+            userHistory.push(`${result}`);
+            break;
 
-    case 'pow' :
-        const numberPow = prompt('Choose a number.', '');
-        const numberPow1 = prompt('Choose a number again.', '');
-        const pow = Math.pow( +numberPow, +numberPow1 );
-        console.log( pow );
-        alert  (`Pow: ${numberPow} to the power ${numberPow1} = ${pow}`); break;*/
+        case '*' :
+            do {
+                y = +prompt('Enter a number.', '0');
+                userNumberTwo = +y;
 
-    default: alert ('Try again choose a math operation');
+            }   while ( userNumberTwo !== +userNumberTwo || userNumberTwo === '' );
+
+            result = userNumberOne * userNumberTwo;
+            console.log(`${result}`);
+            alert(`${result}`);
+            userHistory.push(`${result}`);
+            break;
+
+        case '/' :
+            do {
+                y = +prompt('Enter a number.', '1');
+                userNumberTwo = +y;
+
+            }   while ( userNumberTwo !== +userNumberTwo || userNumberTwo === '' || userNumberTwo === 0);
+
+            result = userNumberOne / userNumberTwo;
+            console.log(`${result}`);
+            alert(`${result}`);
+            userHistory.push(`${result}`);
+            break;
+
+        default: alert ('Try again, enter a number.');
+    }
+    alert(`Operation "${userOperation}" finished with result: ${result}`);
+    console.log(`${userHistory}`);
+
+    endUserChoice = confirm(`Would you like to use the calculator again? `);
+
 }
-    alert(`Operation ${userOperation} finished with result ${result} radian`);
+
+    alert('Have a good day!');
+
+
+
 
 
 
