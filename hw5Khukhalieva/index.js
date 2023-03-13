@@ -10,6 +10,7 @@ const mult = '*';
 const diff = '/';
 const history = 'history';
 let userHistory = [];
+let operationHistory = [];
 let a;
 let x;
 let y;
@@ -20,25 +21,32 @@ let endUserChoice = true;
 
 while (endUserChoice)    {
     do {
-        a = prompt('Hello, choose a math operation: +, -, *, /, cos, sin, pow.',
-            '+, -, *, /, cos, sin, pow');
+        a = prompt('Hello, choose a math operation: +, -, *, /, cos, sin, pow, history.',
+            '+, -, *, /, cos, sin, pow, history');
         userOperation = String(a);
+
 
     }   while ( userOperation !== cos && userOperation !== sin && userOperation !== pow && userOperation !==
         sum && userOperation !== div && userOperation !== mult && userOperation !== diff && userOperation !== ''
+        && userOperation !== history
         );
 
-    do {
-        x = +prompt('Enter a number.', '0');
-        userNumberOne = +x;
+    if (userOperation !== history ) {
+        do {
+            x = +prompt('Enter a number.', '0');
+            userNumberOne = +x;
 
-    }   while ( userNumberOne !== +userNumberOne || userNumberOne === '' );
+        }   while ( userNumberOne !== +userNumberOne || userNumberOne === '');
+
+    }
+
 
     switch ( userOperation ) {
         case 'cos' :
             result = Math.cos(userNumberOne);
             console.log(`${result}`);
             alert(`${result}`);
+            operationHistory.push(`${userOperation}`);
             userHistory.push(`${result}`);
             break;
 
@@ -46,6 +54,7 @@ while (endUserChoice)    {
             result = Math.sin(userNumberOne);
             console.log(`${result}`);
             alert(`${result}`);
+            operationHistory.push(`${userOperation}`);
             userHistory.push(`${result}`);
             break;
 
@@ -59,6 +68,7 @@ while (endUserChoice)    {
             result = Math.pow(userNumberOne, userNumberTwo);
             console.log(`${result}`);
             alert(`${result}`);
+            operationHistory.push(`${userOperation}`);
             userHistory.push(`${result}`);
             break;
 
@@ -72,6 +82,7 @@ while (endUserChoice)    {
             result = userNumberOne + userNumberTwo;
             console.log(`${result}`);
             alert(`${result}`);
+            operationHistory.push(`${userOperation}`);
             userHistory.push(`${result}`);
             break;
 
@@ -85,6 +96,7 @@ while (endUserChoice)    {
             result = userNumberOne - userNumberTwo;
             console.log(`${result}`);
             alert(`${result}`);
+            operationHistory.push(`${userOperation}`);
             userHistory.push(`${result}`);
             break;
 
@@ -98,6 +110,7 @@ while (endUserChoice)    {
             result = userNumberOne * userNumberTwo;
             console.log(`${result}`);
             alert(`${result}`);
+            operationHistory.push(`${userOperation}`);
             userHistory.push(`${result}`);
             break;
 
@@ -111,13 +124,25 @@ while (endUserChoice)    {
             result = userNumberOne / userNumberTwo;
             console.log(`${result}`);
             alert(`${result}`);
+            operationHistory.push(`${userOperation}`);
             userHistory.push(`${result}`);
+            break;
+
+        case 'history' :
+
+            alert(`${operationHistory}`);
+            operationHistory.push(`${history}`);
             break;
 
         default: alert ('Try again, enter a number.');
     }
-    alert(`Operation "${userOperation}" finished with result: ${result}`);
+
+    if (userOperation !== history)  {
+        alert(`Operation "${userOperation}" finished with result: ${result}`);
+    }
+
     console.log(`${userHistory}`);
+    console.log(`${operationHistory}`);
 
     endUserChoice = confirm(`Would you like to use the calculator again? `);
 
