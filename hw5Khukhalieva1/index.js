@@ -28,7 +28,7 @@ while (endUserChoice)    {
 
 
     }   while ( (userOperation !== cos && userOperation !== sin && userOperation !== pow && userOperation !==
-            sum && userOperation !== sub && userOperation !== mult && userOperation !== div && userOperation !== history)
+        sum && userOperation !== sub && userOperation !== mult && userOperation !== div && userOperation !== history)
         || a === '' || a === userCansel
         );
 
@@ -40,6 +40,7 @@ while (endUserChoice)    {
         }   while ( userNumberOne !== +x || x === '');
 
     }
+
 
     switch ( userOperation ) {
         case 'cos' :
