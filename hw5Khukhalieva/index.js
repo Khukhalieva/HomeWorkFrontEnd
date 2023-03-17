@@ -150,7 +150,6 @@ cansel:while (endUserChoice)    {
             continue ;
     }
 
-
     console.log(`Operation results: ${userHistory}`);
     console.log(`Operations history: ${operationHistory}`);
 
