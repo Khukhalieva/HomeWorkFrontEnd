@@ -1,55 +1,29 @@
 'use strict';
 
-let userOperation;
-const cos = 'cos';
-const sin = 'sin';
-const pow = 'pow';
-const sum = '+';
-const sub = '-';
-const mult = '*';
-const div = '/';
-const history = 'history';
-let userHistory = [];
-let operationHistory = [];
 let a;
+let b;
 let x;
 let y;
-let userNumberOne;
-let userNumberTwo;
-let result;
-let endUserChoice = true;
 
 
-cansel:while (endUserChoice)    {
- do {
-     userOperation = prompt('Hello, choose a math operation: +, -, *, /, cos, sin, pow, history.',
-         '');
 
-     if ( userOperation === +userOperation )      {
-         continue cansel;
-     }else  if ( userOperation === '' )      {
-         continue cansel;
-     }else     if (!userOperation)      {
-            break cansel;
-     }
+while (endUserChoice)    {
+    do {
+        a = prompt('Hello, choose a math operation: +, -, *, /, cos, sin, pow, history.',
+            '');
+        userOperation = String(a);
 
- } while ( userOperation !== cos &&
-     userOperation !== sin &&
-     userOperation !== pow &&
-     userOperation !== sum &&
-     userOperation !== sub &&
-     userOperation !== mult &&
-     userOperation !== div &&
-     userOperation !== history
-     );
+    }   while ( userOperation !== cos && userOperation !== sin && userOperation !== pow && userOperation !==
+            sum && userOperation !== sub && userOperation !== mult && userOperation !== div && userOperation !== history
+            || a === '' || a === userCansel
+        );
 
-
-  if (userOperation !== history ) {
-          do {
-            x = prompt('Enter a number.', '');
+    if (userOperation !== history ) {
+        do {
+            x = +prompt('Enter a number.', '');
             userNumberOne = +x;
 
-            }   while ( userNumberOne !== Number(x) || x === '' || x === null );
+        }   while ( x === '' || userNumberOne !== +x  );
 
     }
 
@@ -72,10 +46,10 @@ cansel:while (endUserChoice)    {
 
         case 'pow' :
             do {
-                y = prompt('Enter another number.', '');
+                y = +prompt('Enter a number.', '');
                 userNumberTwo = +y;
 
-            }   while ( userNumberTwo !== Number(y) || y === '' || y === null  );
+            }   while ( userNumberTwo !== +y || y === '' );
 
             result = Math.pow(userNumberOne, userNumberTwo);
             console.log(`${result}`);
@@ -86,10 +60,10 @@ cansel:while (endUserChoice)    {
 
         case '+' :
             do {
-                y = prompt('Enter another number.', '');
+                y = +prompt('Enter a number.', '');
                 userNumberTwo = +y;
 
-            }   while ( userNumberTwo !== Number(y) || y === '' || y === null );
+            }   while ( y !== +userNumberTwo || y === '' );
 
             result = userNumberOne + userNumberTwo;
             console.log(`${result}`);
@@ -100,10 +74,10 @@ cansel:while (endUserChoice)    {
 
         case '-' :
             do {
-                y = prompt('Enter another number.', '');
-                userNumberTwo = Number(y);
+                y = +prompt('Enter a number.', '');
+                userNumberTwo = +y;
 
-            }   while ( userNumberTwo !== Number(y) || y === '' || y === null );
+            }   while ( y !== +userNumberTwo || y === '' );
 
             result = userNumberOne - userNumberTwo;
             console.log(`${result}`);
@@ -114,10 +88,10 @@ cansel:while (endUserChoice)    {
 
         case '*' :
             do {
-                y = prompt('Enter another number.', '');
+                y = +prompt('Enter a number.', '');
                 userNumberTwo = +y;
 
-            }   while ( userNumberTwo !== +y && y === '' );
+            }   while ( y !== +userNumberTwo || y === '' );
 
             result = userNumberOne * userNumberTwo;
             console.log(`${result}`);
@@ -128,10 +102,10 @@ cansel:while (endUserChoice)    {
 
         case '/' :
             do {
-                y = prompt('Enter another number.', '');
+                y = +prompt('Enter a number.', '');
                 userNumberTwo = +y;
 
-            }   while ( userNumberTwo !== Number(y) || y === '' || y === null );
+            }   while ( y !== +userNumberTwo || y === '' || y === 0);
 
             result = userNumberOne / userNumberTwo;
             console.log(`${result}`);
@@ -146,10 +120,13 @@ cansel:while (endUserChoice)    {
             operationHistory.push(`${history}`);
             break;
 
-        default: alert ('Try again, enter a number.')
-            continue ;
+        default: alert ('Try again, enter a number.');
     }
 
+    if (userOperation !== history)  {
+
+        alert(`Operation "${userOperation}" finished with result: ${result}`);
+    }
 
     console.log(`Operation results: ${userHistory}`);
     console.log(`Operations history: ${operationHistory}`);
