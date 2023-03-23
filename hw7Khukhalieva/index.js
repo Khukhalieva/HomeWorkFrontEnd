@@ -1,6 +1,6 @@
 'use strict';
 
-const source = [ 1,'Thomas',3,'Alex',4,-7,'Mango',12 ];
+const source = [ 1, 2, 'Thomas',0,4,-7,'Alex',12 ];
 
     const utils = {
         reverse: function reverseSource(source) {
