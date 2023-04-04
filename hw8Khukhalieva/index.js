@@ -68,10 +68,10 @@ function studentProgressList(arr)   {
     let cloneStudentProgress = addAverageMarks(arr);
 
     cloneStudentProgress.sort(function (a, b) {
-        if (a.averageGrade > b.averageGrade) {
+        if (a.averageGrade < b.averageGrade) {
             return 1;
         }
-        if (a.averageGrade < b.averageGrade) {
+        if (a.averageGrade > b.averageGrade) {
             return -1;
         }
     });
