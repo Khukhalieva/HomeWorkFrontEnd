@@ -46,7 +46,8 @@ function power(a, b)   {
 }
 
 function cosine(a)   {
-    return Math.cos(a);
+    result = Math.cos(a);
+    return result;
 }
 
 function sinus(a)   {
