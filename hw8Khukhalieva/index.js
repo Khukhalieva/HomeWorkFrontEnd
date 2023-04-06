@@ -71,9 +71,8 @@ function studentProgressList(arr)   {
         if (a.averageGrade < b.averageGrade) {
             return 1;
         }
-        if (a.averageGrade > b.averageGrade) {
-            return -1;
-        }
+        return -1;
+
     });
     cloneStudentProgress.forEach((element) =>
         console.log(`${element.name}  -  ${element.averageGrade}`)
@@ -99,6 +98,7 @@ function studentProgressTop(arr)   {
     cloneStudentTop = cloneStudentTop.splice(0, 5);
     return cloneStudentTop;
 }
+
 
 console.log(studentProgressTop(test));
 
