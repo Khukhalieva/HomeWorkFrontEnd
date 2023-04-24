@@ -1,0 +1,54 @@
+.body {
+    font: 500 22px/26px 'Arial', sans-serif;
+    margin: 0 ;
+    color: #48555B;
+    background: #ffffff;
+
+}
+
+.subject    {
+    overflow: hidden;
+    padding: 20px 20px 0;
+}
+
+.paragraph  {
+    padding: 0;
+    margin: 0;
+
+}
+.text   {
+    padding: 15px 0 15px 0;
+    font-style: normal;
+    color: #101417;
+
+}
+.button {
+    width: 150px;
+    height: 40px;
+    border-radius: 10px 10px 0 0;
+    border: #48555B 2px;
+    padding: 0;
+    font: 400 18px/22px 'Arial', sans-serif;
+}
+.button-hide    {
+    display: block;
+
+}
+
+.disappearance  {
+    display: none;
+
+}
+.margin {
+    margin: 56px 0 0 0;
+    color: #5ba20f;
+}
+
+.increase   {
+    font-size: 23px;
+    color: #e50049;
+}
+.decrease   {
+    font-size: 21px;
+    color: #000be5;
+}

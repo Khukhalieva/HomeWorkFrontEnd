@@ -45,8 +45,7 @@ function func(current, result = []) {
         func(Object.entries(current), result);
     }
 //выводим результат методом в строку без разделителя
-      return result.join('');
+    return result.join('');
 }
 
 console.log(func(obj));
-
