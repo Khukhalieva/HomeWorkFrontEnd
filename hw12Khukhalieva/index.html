@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./index.js" defer></script>
+
+    <title>Todo List</title>
+</head>
+    <body class="body">
+        <div class="wrapper">
+            <div class="container">
+
+                    <h1 class="header">Todo List</h1>
+                    <form class="form-input-title" action="#">
+                        <label class="label-title" for="title">Title from todo list:</label>
+                        <input class="input-title" type="text" name="title" id="title" placeholder="Add title" required
+                               minlength="3" maxlength="100" size="50">
+
+                    </form>
+                    <form class="form-input-description" action="#">
+                        <label class="label-description" for="description">Todo description:</label>
+                        <input class="input-description" type="text" name="description" id="description" placeholder="Add todo description" required
+                               minlength="4" maxlength="100" size="50">
+
+
+                    </form>
+                    <form class="form-select" action="#">
+                        <label for="priority-select">Choose a priority:</label>
+                        <select name="priority" id="priority-select">
+
+                            <option class="select-option select-low" value="low">Low</option>
+                            <option class="select-option select-mid"  value="mid">Mid</option>
+                            <option class="select-option select-high"  value="high">High</option>
+                        </select>
+                    </form>
+                <button class="button-add-todo" id="addTodo">Add todo</button>
+                <ol class="todo-list" id="todo-list">
+                </ol>
+
+            </div>
+
+        </div>
+    </body>
+</html>
