@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c57b206f-ad8f-4839-bd01-49281efca5fe" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../hw12Khukhalieva/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../hw12Khukhalieva/index.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="CSS File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectId" id="2KDk2c0wlEq0wzWXrx0DnCyLmBJ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "D:/Доки/HomeWorkFrontEnd/hw11Khukhalieva",
+    "list.type.of.created.stylesheet": "CSS",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c57b206f-ad8f-4839-bd01-49281efca5fe" name="Changes" comment="" />
+      <created>1673516334904</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1673516334904</updated>
+      <workItem from="1673516336105" duration="5169000" />
+      <workItem from="1673887091518" duration="3249000" />
+      <workItem from="1673949110409" duration="3348000" />
+      <workItem from="1674373465159" duration="53000" />
+      <workItem from="1677663968839" duration="9725000" />
+      <workItem from="1677743789875" duration="3147000" />
+      <workItem from="1677834362888" duration="3832000" />
+      <workItem from="1678116231676" duration="871000" />
+      <workItem from="1678179464313" duration="1339000" />
+      <workItem from="1678183754083" duration="1085000" />
+      <workItem from="1678184851412" duration="326000" />
+      <workItem from="1678193517042" duration="8236000" />
+      <workItem from="1681383688737" duration="729000" />
+      <workItem from="1683272764325" duration="3385000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
