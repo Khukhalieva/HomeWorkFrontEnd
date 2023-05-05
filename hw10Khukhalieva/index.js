@@ -6,7 +6,7 @@ function createStack() {
     let arr = [];
     return {
         push:  (arr) => {
-            stack.push(stack);
+            arr.push(arr);
         },
         pop: (arr) => {
             if (arr.length > 0) {
