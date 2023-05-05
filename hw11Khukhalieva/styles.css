@@ -3,7 +3,6 @@
     margin: 0 ;
     color: #48555B;
     background: #ffffff;
-
 }
 
 .subject    {
@@ -20,8 +19,8 @@
     padding: 15px 0 15px 0;
     font-style: normal;
     color: #101417;
-
 }
+
 .button {
     width: 150px;
     height: 40px;
@@ -30,6 +29,7 @@
     padding: 0;
     font: 400 18px/22px 'Arial', sans-serif;
 }
+
 .button-hide    {
     display: block;
 
@@ -39,6 +39,7 @@
     display: none;
 
 }
+
 .margin {
     margin: 56px 0 0 0;
     color: #5ba20f;

@@ -1,7 +1,6 @@
 'use strict';
 
 const paragraph = document.getElementById('paragraph');
-
 const buttonOne = document.getElementById('one');
 const buttonTwo = document.getElementById('two');
 const buttonThree = document.getElementById('three');
