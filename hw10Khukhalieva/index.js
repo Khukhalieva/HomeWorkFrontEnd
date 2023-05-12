@@ -1,7 +1,6 @@
 'use strict';
 
 //создаем стек с пустым массивом c методами
-
 function createStack() {
     let arr = [];
     return {
@@ -16,9 +15,9 @@ function createStack() {
         getStack: () => arr,
     };
 }
+
 const stack = createStack();
 console.log(stack);
-
 
 //создаем функцию фильтрации isBetween(min, max), валидируем ввод
 
@@ -40,6 +39,7 @@ function isBetween(min, max) {
         }
     };
 }
+
 console.log([1, 2, 3, 4, 5, 6, 7, 8, 9, 10].filter(isBetween(3, 6)));
 
 //создаем функцию calculation, валидируем ввод
@@ -70,7 +70,6 @@ function calculation(operation) {
         }
     }
 }
-
 const result = calculation('pow')(2)(3);
 console.log(result);
 
