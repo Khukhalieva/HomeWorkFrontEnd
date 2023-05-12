@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c57b206f-ad8f-4839-bd01-49281efca5fe" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-    </list>
+    <list default="true" id="c57b206f-ad8f-4839-bd01-49281efca5fe" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -37,7 +35,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/Доки/HomeWorkFrontEnd/hw10Khukhalieva",
+    "last_opened_file_path": "D:/Доки/HomeWorkFrontEnd/hw13Khu Login Form (DOM Events)",
     "list.type.of.created.stylesheet": "CSS",
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
@@ -65,7 +63,7 @@
       <workItem from="1678193517042" duration="8236000" />
       <workItem from="1681383688737" duration="729000" />
       <workItem from="1683272764325" duration="3256000" />
-      <workItem from="1683276512899" duration="2427000" />
+      <workItem from="1683276512899" duration="2643000" />
     </task>
     <servers />
   </component>
