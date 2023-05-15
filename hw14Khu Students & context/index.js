@@ -36,7 +36,7 @@ function Student(name, faculty, marks) {
         const verifiedMarks = this.filterNumbers();
 
         if (verifiedMarks.length === 0) {
-            return 0; // если нет оценок, медианная оценка 0
+            return 0; // если нет оценок, медианная оценка = 0
         }
 
         const sortedMarks = verifiedMarks.sort((a, b) => a - b);
@@ -54,13 +54,13 @@ function Student(name, faculty, marks) {
 
 // создаем функцию для получения максимальной оценки студента
     this.getMaxMark = function () {
-        const verifiedMarks = this.filterNumbers(); // фильтруем оценки
+        const verifiedMarks = this.filterNumbers();
 
         if (verifiedMarks.length === 0) {
-            return 0; // если нет оценок, максимальная оценка равна 0
+            return 0;
         }
 
-        return Math.max(...verifiedMarks);
+        return Math.max.apply(null, verifiedMarks);
     }
 
 // создаем функцию для получения минимальной оценки студента
@@ -71,7 +71,7 @@ function Student(name, faculty, marks) {
             return 0;
         }
 
-        return Math.min(...verifiedMarks);
+        return Math.min.apply(null, verifiedMarks);
     }
 
 // создаем функцию для вычисления суммы оценок студента
