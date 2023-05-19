@@ -1,0 +1,40 @@
+.bd-example>:last-child {
+    margin-bottom: 0;
+}
+.carousel {
+    position: relative;
+}
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+.div {
+    display: block;
+}
+
+.carousel-inner {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+
+.bd-placeholder-img-lg {
+    font-size: calc(1.475rem + 2.7vw);
+}
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    text-anchor: middle;
+}
+.w-100 {
+    width: 100%;
+}
+.d-block {
+    display: block;
+}
+img, svg {
+    vertical-align: middle;
+}
