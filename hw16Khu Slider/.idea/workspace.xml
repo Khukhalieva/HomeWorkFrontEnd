@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1be1265e-cbe3-40d2-b1e0-f2b702784c1e" name="Changes" comment="" />
+    <list default="true" id="1be1265e-cbe3-40d2-b1e0-f2b702784c1e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hw17Khu Person, student/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../hw17Khu Person, student/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -17,6 +23,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="2Q0pJ8nG8Ldlfy6XoHv66OYjnVJ" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -28,7 +37,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/Доки/HomeWorkFrontEnd/hw13Khu Login Form (DOM Events)",
+    "last_opened_file_path": "D:/Доки/HomeWorkFrontEnd/hw18Khu User List",
     "list.type.of.created.stylesheet": "CSS",
     "vue.rearranger.settings.migration": "true"
   }
@@ -42,6 +51,8 @@
       <option name="presentableId" value="Default" />
       <updated>1684500284185</updated>
       <workItem from="1684500286471" duration="35000" />
+      <workItem from="1684564956897" duration="6359000" />
+      <workItem from="1686310522121" duration="3920000" />
     </task>
     <servers />
   </component>

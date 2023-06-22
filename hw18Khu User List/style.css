@@ -1,0 +1,37 @@
+.body {
+    font: 500 13px/23px 'Open Sans', sans-serif;
+    margin: 0 ;
+    color: #48555B;
+    background: #d3cece;
+}
+.wrapper    {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+.section{
+    margin: 20px 20px;
+}
+
+.user-list  {
+    list-style: none;
+    margin: 0;
+}
+
+.button {
+    font: 500 13px/18px 'Open Sans', sans-serif;
+    color: #fff;
+    letter-spacing: 1px;
+    display: inline-block;
+    min-width: 100px;
+    padding: 5px 8px;
+    box-sizing: border-box;
+    border-radius: 2px;
+    text-transform: uppercase;
+    background: #8c979d;
+    text-decoration: none;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+
+}
