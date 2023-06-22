@@ -6,7 +6,6 @@ const userList = document.getElementById('user-list');
 
 const xhr = new XMLHttpRequest();
 
-
 function renderUserList(users)   {
 //получаем единое поле 'name', с помощью создания обьекта map
     const mappedUsers = users.map( user => {
@@ -32,7 +31,7 @@ function renderUserList(users)   {
 
     });
 
-    userList.innerHTML = result;
+    userList.innerHTML = userListResult;
 }
 //создаем функцию, в которой будет выполняться сетевой запрос для получения данных о пользователях
 function fetchUsers ()  {

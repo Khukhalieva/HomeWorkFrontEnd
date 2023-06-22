@@ -13,17 +13,16 @@
 </head>
     <body class="body">
         <div    class="wrapper">
-            <section class="user-list"></section>
+            <section class="user-list" id="user-list"></section>
 
-        <script src="./index.js" type="text/html" id="card-template" >
+        <script  type="text/html" id="card-template" >
            <div class="user-card">
                     <p class="user-item">{{name}}</p>
                     <p class="user-item">{{email}}</p>
                     <p class="user-item"><img src="{{avatar}}" alt="{{name}}"/></p>
+               <button class="button" id="prev-button">Prev</button>
+               <button class="button" id="next-button">Next</button>
            </div>
-                <button class="button">Prev</button>
-                <button class="button">Next</button>
-
 
         </script>
         </div>
