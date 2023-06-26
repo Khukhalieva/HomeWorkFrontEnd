@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1be1265e-cbe3-40d2-b1e0-f2b702784c1e" name="Changes" comment="">
+    <list default="true" id="1be1265e-cbe3-40d2-b1e0-f2b702784c1e" name="Changes" comment="add function HW 18 User List">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,8 +57,16 @@
       <workItem from="1684505039765" duration="10066000" />
       <workItem from="1684564943870" duration="10000" />
       <workItem from="1686650021258" duration="14613000" />
-      <workItem from="1687337754407" duration="18189000" />
+      <workItem from="1687337754407" duration="35404000" />
     </task>
+    <task id="LOCAL-00001" summary="add function HW 18 User List">
+      <created>1687457877210</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1687457877210</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -72,5 +82,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="add function HW 18 User List" />
+    <option name="LAST_COMMIT_MESSAGE" value="add function HW 18 User List" />
   </component>
 </project>

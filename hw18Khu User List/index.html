@@ -13,18 +13,22 @@
 </head>
     <body class="body">
         <div    class="wrapper">
-            <section class="user-list" id="user-list"></section>
+            <section class="user-list" id="user-list">
+
+            </section>
 
         <script  type="text/html" id="card-template" >
            <div class="user-card">
                     <p class="user-item">{{name}}</p>
                     <p class="user-item">{{email}}</p>
-                    <p class="user-item"><img src="{{avatar}}" alt="{{name}}"/></p>
-               <button class="button" id="prev-button">Prev</button>
-               <button class="button" id="next-button">Next</button>
+                    <p class="user-item user-img"><img src="{{avatar}}" alt="{{name}}"/></p>
            </div>
-
         </script>
+            <div class="btn">
+                <button class="button" id="prev-button">Prev</button>
+                <button class="button" id="next-button">Next</button>
+            </div>
+
         </div>
     </body>
 </html>
