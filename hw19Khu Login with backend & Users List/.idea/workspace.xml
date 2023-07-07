@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1be1265e-cbe3-40d2-b1e0-f2b702784c1e" name="Changes" comment="add function HW 18 User List">
-      <change beforePath="$PROJECT_DIR$/../hw18Khu User List/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../hw18Khu User List/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +58,7 @@
       <workItem from="1686650021258" duration="14613000" />
       <workItem from="1687337754407" duration="37590000" />
       <workItem from="1687962492502" duration="2643000" />
-      <workItem from="1688385761543" duration="23531000" />
+      <workItem from="1688385761543" duration="40847000" />
     </task>
     <task id="LOCAL-00001" summary="add function HW 18 User List">
       <created>1687457877210</created>

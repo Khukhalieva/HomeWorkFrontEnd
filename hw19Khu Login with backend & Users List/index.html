@@ -29,9 +29,14 @@
 
             </div>
             <section class="user-list" id="user-list" >
-                <div class="btn">
-                    <button class="button" id="changes-button">Changes</button>
-                    <button class="button" id="delete-button">Delete</button>
+                <div class="user-card">
+                    <p class="user-item">{{name}}</p>
+                    <p class="user-item">{{email}}</p>
+                    <p class="user-item user-img"><img src="{{avatar}}" alt="{{name}}"/></p>
+                    <div class="user-actions">
+                        <button class="button edit-button" data-user-id="{{id}}">Edit</button>
+                        <button class="button delete-button" data-user-id="{{id}}">Delete</button>
+                    </div>
                 </div>
 
             </section>

@@ -5,7 +5,8 @@ const loginInput = document.getElementById('login');
 const passwordInput = document.getElementById('password');
 const loginButton = document.getElementById('buttonPassword');
 
-// устанавливаем обработчик клика на кнопку
+
+//тест кнопки
 loginButton.onclick = function () {
     console.log('test btn');
 };
@@ -96,22 +97,22 @@ function handleFormSubmit(event) {
 
     // валидируем входные данные от пользователя
     if (loginValue === '') {
-        addError('Please enter a valid email');
+        console.warn('Please enter a valid email');
         return;
     }
 
     if (!validateEmail(loginValue)) {
-        addError('Invalid email format');
+        console.warn('Invalid email format');
         return;
     }
 
     if (passwordValue === '') {
-        addError('Please enter a password');
+        console.warn('Please enter a password');
         return;
     }
 
     if (passwordValue.length < 6) {
-        addError('Password should be at least 6 characters long');
+        console.warn('Password should be at least 6 characters long');
         passwordInput.value = '';
         return;
     }
@@ -119,10 +120,13 @@ function handleFormSubmit(event) {
     const registeredUser = {
         mail: 'eve.holt@reqres.in',
         password: 'pistol',
+        avatar: '',
     };
+
 
     if (registeredUser.mail === loginValue && registeredUser.password === passwordValue) {
         showSuccessMessage();
+
     } else {
         addError('Invalid login or password');
         passwordInput.value = '';
@@ -152,37 +156,58 @@ function prepareUserCard(user, cardTemplate) {
     let currentUserList = cardTemplate;
     //перебор всех ключей объекта user с помощью метода forEach
     Object.keys(user).forEach(key  => {
-        // Замена всех вхождений '{{key}}' в шаблоне карточки на соответствующие значения из объекта user
-        currentUserList = currentUserList.replaceAll(`{{${key}}}`, user[key])
+        // замена всех вхождений '{{key}}' в шаблоне карточки на соответствующие значения из объекта user
+        currentUserList = currentUserList.replaceAll(`{{${key}}}`, user[key]);
     });
     return currentUserList;
 }
-//создаем функцию отображения списка на странице
-function renderUserList(users)   {
-//получаем единое поле 'name', с помощью создания обьекта map
-    const mappedUsers = users.map( user => {
-        return  {
-            ...user,
-            name:`${user.first_name} ${user.last_name} `,
-        }
+
+// создаем функцию для отображения списка пользователей на странице
+function renderUserList(users) {
+    // очищаем содержимое элемента, где будет отображаться список пользователей
+    userList.innerHTML = '';
+
+    // перебираем массив пользователей и создаем для каждого пользователя карточку
+    users.forEach((user) => {
+        // создаем элемент div для карточки пользователя
+        const userCard = document.createElement('div');
+        userCard.className = 'user-card';
+
+        // создаем HTML-разметку карточки пользователя
+        const cardContent = `
+      <p class="user-item">${user.first_name} ${user.last_name} </p>
+      <p class="user-item">${user.email}</p>
+      <p class="user-item user-img"><img src="${user.avatar}" alt="${user.name}"/></p>
+      <div class="user-actions">
+        <button class="button edit-button" data-user-id="${user.id}">Edit</button>
+        <button class="button delete-button" data-user-id="${user.id}">Delete</button>
+      </div>
+    `;
+
+        // устанавливаем HTML-разметку внутрь элемента карточки пользователя
+        userCard.innerHTML = cardContent;
+
+        // добавляем обработчики событий для кнопок редактирования и удаления
+        const editButton = userCard.querySelector('.edit-button');
+        const deleteButton = userCard.querySelector('.delete-button');
+
+        editButton.addEventListener('click', () => {
+            editUser(user.id);
+        });
+
+        deleteButton.addEventListener('click', () => {
+            deleteUser(user.id);
+        });
+
+        // добавляем карточку пользователя в список пользователей
+        userList.appendChild(userCard);
     });
-
-
-    let userListResult = '';
-    //пробегаемся по списку user и создаем карточку для каждого
-    mappedUsers.forEach((user) => {
-
-        // добавление текущей карточки пользователя к общему результату списка пользователей
-        userListResult += prepareUserCard(user, cardTemplate);
-    });
-
-    // вывод обновленного списка пользователей на страницу
-    userList.innerHTML = userListResult;
 }
+
 //создаем функцию, в которой будет выполняться сетевой запрос для получения данных о пользователях
 function fetchUsers (callback)  {
-    //// открываем асинхронное GET-соединение с указанным URL
-    xhr.open('GET', 'https://reqres.in/api/users?page=1', true);
+    // открываем асинхронное GET-соединение с указанным URL
+    xhr.open('GET', 'https://reqres.in/api/users?page=1' , true);
 
     // устанавливаем заголовок Content-type для указания формата данных
     xhr.setRequestHeader("Content-type", "application/json");
@@ -195,6 +220,7 @@ function fetchUsers (callback)  {
             // пытаемся разобрать ответ сервера в формате JSON
             const response = JSON.parse(e.target.response);
 
+
             //вызов функции создания карточки пользователя
             callback(response.data);
 
@@ -202,12 +228,15 @@ function fetchUsers (callback)  {
             console.warn('Error parsing JSON');
         }
     };
-    // Обработчик события onerror - вызывается при ошибке запроса
+
+
+     // Обработчик события onerror - вызывается при ошибке запроса
     xhr.onerror = function (e) {
         console.log(e)
     };
-    // Отправляем сетевой запрос
+    // oтправляем сетевой запрос
     xhr.send();
+
 }
 // самовызывающаяся функция
 (() => {
@@ -215,6 +244,7 @@ function fetchUsers (callback)  {
     fetchUsers((users) => {
         // вызов функции renderUserList для отображения списка пользователей
         renderUserList(users);
+
     });
 })();
 
@@ -226,7 +256,7 @@ document.getElementById('next-button').addEventListener('click', () => {
     // увеличение значения параметра page
     currentPage += 1;
 
-    // Отправка запроса на сервер с новым значением параметра page
+    // отправка запроса на сервер с новым значением параметра page
     fetchUsersButton(currentPage);
 });
 
@@ -239,6 +269,7 @@ document.getElementById('prev-button').addEventListener('click', () => {
     // отправка запроса на сервер с новым значением параметра page
     fetchUsersButton(currentPage);
 });
+
 
 // создаем функцию для получения данных о пользователях с сервера при нажатии на кнопки
 function fetchUsersButton(page) {
@@ -269,5 +300,69 @@ function fetchUsersButton(page) {
     };
 
     xhr.send();
+
+
 }
 
+// создаем функцию для редактирования пользователя
+function editUser(userId, updatedUserData) {
+    // составляем url запроса для редактирования конкретного пользователя
+    const url = `https://reqres.in/api/users/${userId}`;
+
+    // открываем асинхронное PUT-соединение с указанным URL
+    xhr.open('PUT', url, true);
+
+    // устанавливаем заголовок Content-type для указания формата данных
+    xhr.setRequestHeader('Content-type', 'application/json');
+
+    // обработчик события вызывается при получении ответа на запрос
+    xhr.onload = function (e) {
+        try {
+            const response = JSON.parse(e.target.responseText);
+            console.log('User updated:', response);
+            // обработка ответа сервера после успешного обновления пользователя
+
+        } catch (error) {
+            console.warn('Error parsing JSON');
+        }
+    };
+    // обработка ошибки
+    xhr.onerror = function (e) {
+        console.log(e);
+    };
+
+    // Отправляем PUT-запрос на сервер с обновленными данными пользователя
+    xhr.send(JSON.stringify(updatedUserData));
+}
+
+// создаем функцию для удаления пользователя
+function deleteUser(userId) {
+    // составляем URL запроса для удаления конкретного пользователя
+    const url = `https://reqres.in/api/users/${userId}`;
+
+    // открываем асинхронное DELETE-соединение с указанным URL
+    xhr.open('DELETE', url, true);
+
+    // устанавливаем заголовок Content-type для указания формата данных
+    xhr.setRequestHeader('Content-type', 'application/json');
+
+    // обработчик события onload, вызывается при получении ответа на запрос
+    xhr.onload = function(e) {
+        try {
+            const response = JSON.parse(e.target.responseText);
+            console.log('User deleted:', response);
+            // обработка ответа сервера после успешного удаления пользователя
+
+        } catch (error) {
+            console.warn('Error parsing JSON');
+        }
+    };
+
+    // обработчик события onerror, вызывается при ошибке запроса
+    xhr.onerror = function(e) {
+        console.log(e);
+    };
+
+    // отправляем DELETE-запрос на сервер
+    xhr.send();
+}
