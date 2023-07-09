@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1be1265e-cbe3-40d2-b1e0-f2b702784c1e" name="Changes" comment="add function HW 18 User List">
-      <change beforePath="$PROJECT_DIR$/../hw19Khu Login with backend &amp; Users List/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hw19Khu Login with backend &amp; Users List/.idea/hw16Khu Slider.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hw19Khu Login with backend &amp; Users List/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hw19Khu Login with backend &amp; Users List/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hw19Khu Login with backend &amp; Users List/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../hw19Khu Login with backend &amp; Users List/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hw19Khu Login with backend &amp; Users List/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hw19Khu Login with backend &amp; Users List/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hw19Khu Login with backend &amp; Users List/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,17 +31,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/Доки/HomeWorkFrontEnd/hw19Khu Login with backend & Users List",
-    "list.type.of.created.stylesheet": "CSS",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Доки/HomeWorkFrontEnd/hw19Khu Login with backend &amp; Users List&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -65,6 +58,7 @@
       <workItem from="1687962492502" duration="2643000" />
       <workItem from="1688385761543" duration="44574000" />
       <workItem from="1688880530377" duration="3271000" />
+      <workItem from="1688883990113" duration="863000" />
     </task>
     <task id="LOCAL-00001" summary="add function HW 18 User List">
       <created>1687457877210</created>
