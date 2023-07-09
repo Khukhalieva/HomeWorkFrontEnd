@@ -6,6 +6,11 @@ const passwordInput = document.getElementById('password');
 const loginButton = document.getElementById('buttonPassword');
 
 
+//тест кнопки
+loginButton.onclick = function () {
+    console.log('test btn');
+};
+
 // функция для проверки, можно ли разблокировать кнопку логина
 function checkLoginButtonEnabled() {
     return loginInput.value.trim() !== '' && passwordInput.value.trim() !== '';
@@ -128,24 +133,17 @@ function handleFormSubmit(event) {
         passwordInput.value = '';
         hideContainer(); // скрываем контейнер в случае неверного логина или пароля
 
-
-
         // показываем форму логина в случае неверного логина или пароля
         const loginForm = document.querySelector('.form-input-login');
         loginForm.style.display = 'block';
     }
 }
 
-const token = ''; // предполагаем, что токен находится в поле "token" в ответе
-
-//функция проверка наличия токена
-function checkLoginButtonEnabled() {
-    return loginInput.value.trim() !== '' && passwordInput.value.trim() !== '';
-}
 
 
 // получаем содержимое шаблона карточки из элемента
 const cardTemplate = document.getElementById('card-template').innerHTML;
+
 const userList = document.getElementById('user-list');
 
 const xhr = new XMLHttpRequest();
@@ -207,52 +205,13 @@ function renderUserList(users) {
     });
 }
 
-window.token = token;
-
-//функция для получения положительного токена с сервера
-function getToken ()  {
-    const xhr = new XMLHttpRequest();
-
-//метод запроса и URL для получения токена
-    xhr.open('POST', 'https://reqres.in/api/login', true);
-
-// устанавливаем заголовок Content-type для указания формата данных
-    xhr.setRequestHeader('Content-type', 'application/json');
-
-// устанавливаем обработчик события onload, который будет вызван при получении ответа на запрос
-    xhr.onload = function() {
-        if (xhr.status === 200) {
-            //ответ сервера успешный, обрабатываем полученный токен
-            const response = JSON.parse(xhr.responseText);
-            const token = response.token;
-            // console.log('Token:', token);
-        } else {
-            //ошибка при получении токена
-            console.error('Failed to get token. Status:', xhr.status);
-        }
-    };
-    xhr.onerror = function (e) {
-        console.log(e);
-    };
-
-// создаем объект с данными для отправки на сервер
-    const data = {
-        email: 'eve.holt@reqres.in',
-        password: 'pistol'
-    };
-// отправляем запрос на сервер с данными для получения токена
-    xhr.send(JSON.stringify(data));
-
-}
-
 //создаем функцию, в которой будет выполняться сетевой запрос для получения данных о пользователях
 function fetchUsers (callback)  {
     // открываем асинхронное GET-соединение с указанным URL
     xhr.open('GET', 'https://reqres.in/api/users?page=1' , true);
 
     // устанавливаем заголовок Content-type для указания формата данных
-    xhr.setRequestHeader("Authorization", `Bearer ${token}`);
-
+    xhr.setRequestHeader("Content-type", "application/json");
 
     //обработчик события при получении ответа на запрос
     xhr.onload = function (e){
@@ -270,6 +229,7 @@ function fetchUsers (callback)  {
         }
     };
 
+
      // Обработчик события onerror - вызывается при ошибке запроса
     xhr.onerror = function (e) {
         console.log(e)
@@ -278,10 +238,6 @@ function fetchUsers (callback)  {
     xhr.send();
 
 }
-
-// вызываем функцию для получения токена перед вызовом fetchUsers
-getToken();
-
 // самовызывающаяся функция
 (() => {
     // вызов функции fetchUsers с колбэком, который будет вызван после получения списка пользователей

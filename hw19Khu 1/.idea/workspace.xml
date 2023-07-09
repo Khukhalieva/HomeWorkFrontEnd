@@ -2,14 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1be1265e-cbe3-40d2-b1e0-f2b702784c1e" name="Changes" comment="add function HW 18 User List">
-      <change beforePath="$PROJECT_DIR$/../hw19Khu Login with backend &amp; Users List/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hw19Khu Login with backend &amp; Users List/.idea/hw16Khu Slider.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hw19Khu Login with backend &amp; Users List/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hw19Khu Login with backend &amp; Users List/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hw19Khu Login with backend &amp; Users List/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../hw19Khu Login with backend &amp; Users List/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hw19Khu Login with backend &amp; Users List/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hw19Khu Login with backend &amp; Users List/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hw19Khu Login with backend &amp; Users List/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +38,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/Доки/HomeWorkFrontEnd/hw19Khu Login with backend & Users List",
+    "last_opened_file_path": "D:/Доки/HomeWorkFrontEnd/hw13Khu Login Form (DOM Events)",
     "list.type.of.created.stylesheet": "CSS",
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
@@ -64,7 +59,6 @@
       <workItem from="1687337754407" duration="37590000" />
       <workItem from="1687962492502" duration="2643000" />
       <workItem from="1688385761543" duration="44574000" />
-      <workItem from="1688880530377" duration="3271000" />
     </task>
     <task id="LOCAL-00001" summary="add function HW 18 User List">
       <created>1687457877210</created>

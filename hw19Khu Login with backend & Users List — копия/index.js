@@ -6,6 +6,11 @@ const passwordInput = document.getElementById('password');
 const loginButton = document.getElementById('buttonPassword');
 
 
+//тест кнопки
+loginButton.onclick = function () {
+    console.log('test btn');
+};
+
 // функция для проверки, можно ли разблокировать кнопку логина
 function checkLoginButtonEnabled() {
     return loginInput.value.trim() !== '' && passwordInput.value.trim() !== '';
@@ -225,7 +230,7 @@ function getToken ()  {
             //ответ сервера успешный, обрабатываем полученный токен
             const response = JSON.parse(xhr.responseText);
             const token = response.token;
-            // console.log('Token:', token);
+            console.log('Token:', token);
         } else {
             //ошибка при получении токена
             console.error('Failed to get token. Status:', xhr.status);
