@@ -5,6 +5,8 @@ const loginInput = document.getElementById('login');
 const passwordInput = document.getElementById('password');
 const loginButton = document.getElementById('buttonPassword');
 
+const xhr = new XMLHttpRequest();
+
 
 // функция для проверки, можно ли разблокировать кнопку логина
 function checkLoginButtonEnabled() {
@@ -37,10 +39,17 @@ function clearErrors() {
 }
 
 // функция для отображения списка пользователей при успешном логине
-function showSuccessMessage() {
-    hideForm(); // скрываем форму логина после успешного логина
-    showContainer(); // показываем контейнер с пользователями
-    fetchUsers(renderUserList); // загружаем и отображаем список пользователей
+function showSuccessMessage(token) {
+    hideForm();
+    showContainer();
+    // проверяем наличие токена
+    if (checkToken()) {
+        //загружаем список пользователя візовом функции
+        fetchUsers(token, renderUserList);
+
+    } else {
+        console.error('Token not found');
+    }
 }
 
 // функция для показа контейнера с пользователями и кнопок
@@ -74,96 +83,114 @@ function validateEmail(email) {
     return emailRegex.test(email);
 }
 
+// функция для отправки формы логина и получения токена
+function sendLoginForm(email, password) {
+    const url = 'https://reqres.in/api/login';
+    xhr.open('POST', url, true);
+    xhr.setRequestHeader('Content-type', 'application/json');
+    xhr.onload = function () {
+        // валидация введенных данных
+        if (!validateEmail(email)) {
+            console.warn('Please enter a valid email address');
+            return;
+        }
+
+        if (password.length < 6) {
+            console.warn('Please enter a password with at least 6 characters');
+            return;
+        }
+
+        if (xhr.status === 200) {
+            // обработка успешного ответа сервера после отправки формы
+            const response = JSON.parse(xhr.responseText);
+            token = response.token;
+
+            // вызов функции showSuccessMessage с полученным токеном
+            showSuccessMessage(token);
+        } else {
+            // обработка ошибки при отправке формы
+            console.error('Failed to submit login form. Status:', xhr.status);
+        }
+    };
+    xhr.onerror = function (e) {
+        console.log(e);
+    };
+
+    const data = {
+        email: email,
+        password: password,
+    };
+
+    xhr.send(JSON.stringify(data));
+}
+
 // функция - обработчик события отправки формы
 function handleFormSubmit(event) {
-    event.preventDefault(); // предотвращаем отправку формы
+    event.preventDefault();
+    // получаем значения из полей ввода
+    const loginInput = document.getElementById('login');
+    const passwordInput = document.getElementById('password');
 
-    // создаем объект с данными пользователя
-    let userData = {
-        email: loginInput.value,
-        password: passwordInput.value
-    };
+    const email = loginInput.value.trim();
+    const password = passwordInput.value.trim();
 
-    // вводим значение ввода пользователя
-    const loginValue = loginInput.value.trim();
-    const passwordValue = passwordInput.value.trim();
-
-    clearErrors(); // очищаем сообщения об ошибках
-
-    // валидируем входные данные от пользователя
-    if (loginValue === '') {
-        console.warn('Please enter a valid email');
+    if (email === '' || password === '') {
+        console.warn('Please enter a valid email and password');
         return;
     }
+    getToken(); // вызываем функцию для получения токена
 
-    if (!validateEmail(loginValue)) {
-        console.warn('Invalid email format');
-        return;
-    }
-
-    if (passwordValue === '') {
-        console.warn('Please enter a password');
-        return;
-    }
-
-    if (passwordValue.length < 6) {
-        console.warn('Password should be at least 6 characters long');
-        passwordInput.value = '';
-        return;
-    }
-
-    const registeredUser = {
-        mail: 'eve.holt@reqres.in',
-        password: 'pistol',
-        avatar: '',
-        id: '',
-    };
-
-
-    if (registeredUser.mail === loginValue && registeredUser.password === passwordValue) {
-        showSuccessMessage();
-
-    } else {
-        addError('Invalid login or password');
-        passwordInput.value = '';
-        hideContainer(); // скрываем контейнер в случае неверного логина или пароля
-
-
-
-        // показываем форму логина в случае неверного логина или пароля
-        const loginForm = document.querySelector('.form-input-login');
-        loginForm.style.display = 'block';
-    }
+    sendLoginForm(email, password);
 }
-
-const token = ''; // предполагаем, что токен находится в поле "token" в ответе
-
-//функция проверка наличия токена
-function checkLoginButtonEnabled() {
-    return loginInput.value.trim() !== '' && passwordInput.value.trim() !== '';
-}
-
-
-// получаем содержимое шаблона карточки из элемента
-const cardTemplate = document.getElementById('card-template').innerHTML;
-const userList = document.getElementById('user-list');
-
-const xhr = new XMLHttpRequest();
 
 // устанавливаем обработчик события отправки формы
 const loginForm = document.querySelector('.form-input-login');
 loginForm.addEventListener('submit', handleFormSubmit);
 
-function prepareUserCard(user, cardTemplate) {
-    // присваивание переменной currentUserList значения шаблона карточки
-    let currentUserList = cardTemplate;
-    //перебор всех ключей объекта user с помощью метода forEach
-    Object.keys(user).forEach(key  => {
-        // замена всех вхождений '{{key}}' в шаблоне карточки на соответствующие значения из объекта user
-        currentUserList = currentUserList.replaceAll(`{{${key}}}`, user[key]);
-    });
-    return currentUserList;
+let token = ''; // объявляем переменную token в глобальной области видимости
+
+// функция проверки наличия токена
+function checkToken() {
+    return token !== '';
 }
+
+//функция для получения положительного токена с сервера
+function getToken()  {
+//метод запроса и URL для получения токена
+    xhr.open('POST', 'https://reqres.in/api/login', true);
+
+// устанавливаем заголовок Content-type для указания формата данных
+    xhr.setRequestHeader('Content-type', 'application/json');
+
+// устанавливаем обработчик события onload, который будет вызван при получении ответа на запрос
+    xhr.onload = function() {
+        if (xhr.status === 200 ) {
+            //ответ сервера успешный, обрабатываем полученный токен
+            const response = JSON.parse(xhr.responseText);
+            token = response.token;
+            console.log('Token:', token);
+            // вызов функции showSuccessMessage с полученным токеном
+            showSuccessMessage(token);
+        } else {
+            //ошибка при получении токена
+            console.error('Failed to get token. Status:', xhr.status);
+        }
+    };
+    xhr.onerror = function (e) {
+        console.log(e);
+    };
+
+// создаем объект с данными для отправки на сервер
+    const data = {
+        email: 'eve.holt@reqres.in',
+        password: 'pistol',
+    };
+}
+
+// получаем содержимое шаблона карточки из элемента
+const cardTemplate = document.getElementById('card-template').innerHTML;
+const userList = document.getElementById('user-list');
+
 
 // создаем функцию для отображения списка пользователей на странице
 function renderUserList(users) {
@@ -186,14 +213,13 @@ function renderUserList(users) {
         <button class="button delete-button" data-user-id="${user.id}">Delete</button>
       </div>
     `;
-
         // устанавливаем HTML-разметку внутрь элемента карточки пользователя
         userCard.innerHTML = cardContent;
 
         // добавляем обработчики событий для кнопок редактирования и удаления
         const editButton = userCard.querySelector('.edit-button');
         const deleteButton = userCard.querySelector('.delete-button');
-
+        //прослушиваем кнопку редактирования
         editButton.addEventListener('click', () => {
             editUser(user.id);
         });
@@ -207,113 +233,72 @@ function renderUserList(users) {
     });
 }
 
-window.token = token;
-
-//функция для получения положительного токена с сервера
-function getToken ()  {
-    const xhr = new XMLHttpRequest();
-
-//метод запроса и URL для получения токена
-    xhr.open('POST', 'https://reqres.in/api/login', true);
-
-// устанавливаем заголовок Content-type для указания формата данных
-    xhr.setRequestHeader('Content-type', 'application/json');
-
-// устанавливаем обработчик события onload, который будет вызван при получении ответа на запрос
-    xhr.onload = function() {
-        if (xhr.status === 200) {
-            //ответ сервера успешный, обрабатываем полученный токен
-            const response = JSON.parse(xhr.responseText);
-            const token = response.token;
-            // console.log('Token:', token);
-        } else {
-            //ошибка при получении токена
-            console.error('Failed to get token. Status:', xhr.status);
-        }
-    };
-    xhr.onerror = function (e) {
-        console.log(e);
-    };
-
-// создаем объект с данными для отправки на сервер
-    const data = {
-        email: 'eve.holt@reqres.in',
-        password: 'pistol'
-    };
-// отправляем запрос на сервер с данными для получения токена
-    xhr.send(JSON.stringify(data));
-
-}
-
 //создаем функцию, в которой будет выполняться сетевой запрос для получения данных о пользователях
-function fetchUsers (callback)  {
+function fetchUsers (token, callback)  {
+    const url = 'https://reqres.in/api/users?page=1';
     // открываем асинхронное GET-соединение с указанным URL
-    xhr.open('GET', 'https://reqres.in/api/users?page=1' , true);
+    xhr.open('GET', url, true);
 
     // устанавливаем заголовок Content-type для указания формата данных
-    xhr.setRequestHeader("Authorization", `Bearer ${token}`);
-
+    xhr.setRequestHeader('Authorization', `Bearer ${encodeURIComponent(token)}`);
 
     //обработчик события при получении ответа на запрос
     xhr.onload = function (e){
-
         //обработка ответа сервера с отловом ошибки
         try {
             // пытаемся разобрать ответ сервера в формате JSON
-            const response = JSON.parse(e.target.response);
+            const response = JSON.parse(xhr.responseText);
 
             //вызов функции создания карточки пользователя
-            callback(response.data);
-
+            if (typeof callback === 'function') {
+                callback(response.data);
+            }
         } catch (error)   {
             console.warn('Error parsing JSON');
         }
     };
-
-     // Обработчик события onerror - вызывается при ошибке запроса
+     // обработчик события onerror - вызывается при ошибке запроса
     xhr.onerror = function (e) {
         console.log(e)
     };
     // отправляем сетевой запрос
     xhr.send();
-
 }
-
-// вызываем функцию для получения токена перед вызовом fetchUsers
-getToken();
-
-// самовызывающаяся функция
-(() => {
-    // вызов функции fetchUsers с колбэком, который будет вызван после получения списка пользователей
-    fetchUsers((users) => {
-        // вызов функции renderUserList для отображения списка пользователей
-        renderUserList(users);
-
-    });
-})();
-
 
 let currentPage = 1;
 // обработчик события клика на кнопку вперед
 document.getElementById('next-button').addEventListener('click', () => {
-
+    // проверяем, если currentPage равно 1, то кнопку "назад" можно включить
+    if (currentPage === 1) {
+        document.getElementById('prev-button').disabled = false;
+    }
     // увеличение значения параметра page
     currentPage += 1;
 
     // отправка запроса на сервер с новым значением параметра page
     fetchUsersButton(currentPage);
+    // если currentPage больше или равно 2, то кнопку "Вперед" нужно отключить
+    if (currentPage >= 2) {
+        document.getElementById('next-button').disabled = true;
+    }
 });
 
 // обработчик события клика на кнопку назад
 document.getElementById('prev-button').addEventListener('click', () => {
-
+    // если currentPage равно 2, то кнопку "Вперед" включаем
+    if (currentPage === 2) {
+        document.getElementById('next-button').disabled = false;
+    }
     // уменьшение значения параметра page
     currentPage -= 1;
 
     // отправка запроса на сервер с новым значением параметра page
     fetchUsersButton(currentPage);
+    // если currentPage равно 1, то кнопку "Назад" отключаем
+    if (currentPage === 1) {
+        document.getElementById('prev-button').disabled = true;
+    }
 });
-
 
 // создаем функцию для получения данных о пользователях с сервера при нажатии на кнопки
 function fetchUsersButton(page) {
@@ -323,8 +308,8 @@ function fetchUsersButton(page) {
     // открываем асинхронное GET-соединение с указанным URL
     xhr.open('GET', url, true);
 
-    // устанавливаем заголовок Content-type для указания формата данных
-    xhr.setRequestHeader('Content-type', 'application/json');
+    // устанавливаем заголовок для указания формата данных
+    xhr.setRequestHeader('Accept', 'application/json');
 
     // обработчик события onload, вызывается при получении ответа на запрос
     xhr.onload = function(e) {
@@ -342,15 +327,21 @@ function fetchUsersButton(page) {
     xhr.onerror = function(e) {
         console.log(e);
     };
-
     xhr.send();
-
 }
 
 // создаем функцию для редактирования пользователя
-function editUser(userId, updatedUserData) {
+function editUser(userId) {
     // составляем url запроса для редактирования конкретного пользователя
     const url = `https://reqres.in/api/users/${userId}`;
+
+    // создаем объект с обновленными данными пользователя
+    let updatedUserData = {
+        // данные пользователя для обновления
+        name: 'New name',
+        email: 'New email',
+        avatar: 'New avatar',
+    };
 
     // открываем асинхронное PUT-соединение с указанным URL
     xhr.open('PUT', url, true);
@@ -372,8 +363,7 @@ function editUser(userId, updatedUserData) {
     xhr.onerror = function (e) {
         console.log(e);
     };
-
-    // Отправляем PUT-запрос на сервер с обновленными данными пользователя
+    // отправляем PUT-запрос на сервер с обновленными данными пользователя
     xhr.send(JSON.stringify(updatedUserData));
 }
 
@@ -391,14 +381,21 @@ function deleteUser(userId) {
     // обработчик события onload, вызывается при получении ответа на запрос
     xhr.onload = function(e) {
         try {
-            const response = JSON.parse(e.target.response);
-            console.log('User deleted:', response); // обработка ответа сервера после успешного удаления пользователя
+            if (xhr.status === 204) {
+                //удаление карточки пользователя из списка на фронтенде
+                const deletedCard = document.querySelector(`.user-card[data-user-id="${userId}"]`);
+                if (deletedCard) {
+                    deletedCard.remove();
+                }
+                console.log('User deleted:'); //ответ сервера после успешного удаления
+            } else {
+                    console.error('Failed to delete user. Status:', xhr.status);
+                }
 
         } catch (error) {
-            console.warn('Error parsing JSON');
+            console.warn('Error parsing JSON', error);
         }
     };
-
     // обработчик события onerror, вызывается при ошибке запроса
     xhr.onerror = function(e) {
         console.log(e);
