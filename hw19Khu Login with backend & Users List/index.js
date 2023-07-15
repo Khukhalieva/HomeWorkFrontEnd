@@ -7,7 +7,6 @@ const loginButton = document.getElementById('buttonPassword');
 
 const xhr = new XMLHttpRequest();
 
-
 // функция для проверки, можно ли разблокировать кнопку логина
 function checkLoginButtonEnabled() {
     return loginInput.value.trim() !== '' && passwordInput.value.trim() !== '';
