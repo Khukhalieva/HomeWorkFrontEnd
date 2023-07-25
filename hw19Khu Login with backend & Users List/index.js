@@ -7,6 +7,7 @@ const loginButton = document.getElementById('buttonPassword');
 
 const xhr = new XMLHttpRequest();
 
+
 // функция для проверки, можно ли разблокировать кнопку логина
 function checkLoginButtonEnabled() {
     return loginInput.value.trim() !== '' && passwordInput.value.trim() !== '';
@@ -70,6 +71,7 @@ function hideContainer() {
 // скрываем контейнер изначально
 hideContainer();
 
+
 // функция для скрытия формы логина
 function hideForm() {
     const loginForm = document.querySelector('.container');
@@ -84,6 +86,8 @@ function validateEmail(email) {
 
 // функция для отправки формы логина и получения токена
 function sendLoginForm(email, password) {
+    const xhr = new XMLHttpRequest();
+
     const url = 'https://reqres.in/api/login';
     xhr.open('POST', url, true);
     xhr.setRequestHeader('Content-type', 'application/json');
@@ -154,20 +158,21 @@ function checkToken() {
 }
 
 //функция для получения положительного токена с сервера
-function getToken()  {
-//метод запроса и URL для получения токена
+function getToken() {
+    const xhr = new XMLHttpRequest();
+    //метод запроса и URL для получения токена
     xhr.open('POST', 'https://reqres.in/api/login', true);
 
-// устанавливаем заголовок Content-type для указания формата данных
+    // устанавливаем заголовок Content-type для указания формата данных
     xhr.setRequestHeader('Content-type', 'application/json');
 
-// устанавливаем обработчик события onload, который будет вызван при получении ответа на запрос
+    // устанавливаем обработчик события onload, который будет вызван при получении ответа на запрос
     xhr.onload = function() {
         if (xhr.status === 200 ) {
             //ответ сервера успешный, обрабатываем полученный токен
             const response = JSON.parse(xhr.responseText);
             token = response.token;
-            console.log('Token:', token);
+
             // вызов функции showSuccessMessage с полученным токеном
             showSuccessMessage(token);
         } else {
@@ -184,6 +189,8 @@ function getToken()  {
         email: 'eve.holt@reqres.in',
         password: 'pistol',
     };
+    //отправляем запрос
+    xhr.send(JSON.stringify(data));
 }
 
 // получаем содержимое шаблона карточки из элемента
@@ -234,6 +241,7 @@ function renderUserList(users) {
 
 //создаем функцию, в которой будет выполняться сетевой запрос для получения данных о пользователях
 function fetchUsers (token, callback)  {
+    const xhr = new XMLHttpRequest();
     const url = 'https://reqres.in/api/users?page=1';
     // открываем асинхронное GET-соединение с указанным URL
     xhr.open('GET', url, true);
@@ -256,7 +264,7 @@ function fetchUsers (token, callback)  {
             console.warn('Error parsing JSON');
         }
     };
-     // обработчик события onerror - вызывается при ошибке запроса
+    // обработчик события onerror - вызывается при ошибке запроса
     xhr.onerror = function (e) {
         console.log(e)
     };
@@ -301,6 +309,7 @@ document.getElementById('prev-button').addEventListener('click', () => {
 
 // создаем функцию для получения данных о пользователях с сервера при нажатии на кнопки
 function fetchUsersButton(page) {
+    const xhr = new XMLHttpRequest();
     // составляем URL запроса с учетом значения параметра page
     const url = `https://reqres.in/api/users?page=${page}`;
 
@@ -329,45 +338,135 @@ function fetchUsersButton(page) {
     xhr.send();
 }
 
-// создаем функцию для редактирования пользователя
-function editUser(userId) {
-    // составляем url запроса для редактирования конкретного пользователя
-    const url = `https://reqres.in/api/users/${userId}`;
+// функция для скрытия формі редактирования пользователей
+function hideEditContainer() {
+    const container = document.getElementById('edit-user-form');
+    container.style.display = 'none';
+    const btn = document.getElementById('btn-edit');
+    btn.style.display = 'none';
+}
+
+// скрываем контейнер редактирования изначально
+hideEditContainer()
+
+function handleEditButtonClick(event) {
+    const userCard = event.target.closest('.user-card');
+    if (!userCard) return;
+
+    const userId = userCard.dataset.userId;
+    const firstName = userCard.querySelector('.user-firstname').textContent;
+    const lastName = userCard.querySelector('.user-lastname').textContent;
+    const email = userCard.querySelector('.user-email').textContent;
 
     // создаем объект с обновленными данными пользователя
     let updatedUserData = {
         // данные пользователя для обновления
-        name: 'New name',
-        email: 'New email',
-        avatar: 'New avatar',
+        first_name: '',
+        last_name: '',
+        email: '',
+
     };
 
-    // открываем асинхронное PUT-соединение с указанным URL
-    xhr.open('PUT', url, true);
+    //вызываем функцию для редактирования пользователя
+    editUser(userId, updatedUserData);
+}
 
-    // устанавливаем заголовок Content-type для указания формата данных
-    xhr.setRequestHeader('Content-type', 'application/json');
+//обработчик события edit
+const editButtons = document.querySelectorAll('.btn-edit');
+editButtons.forEach(button => {
+    button.addEventListener('click', handleEditButtonClick);
+});
 
-    // обработчик события вызывается при получении ответа на запрос
-    xhr.onload = function (e) {
-        try {
-            const response = JSON.parse(e.target.responseText);
-            console.log('User updated:', response);// обработка ответа сервера после успешного обновления пользователя
 
-        } catch (error) {
-            console.warn('Error parsing JSON');
+function fetchUserById(userId, successCallback, errorCallback) {
+    const xhr = new XMLHttpRequest();
+    const url = `https://reqres.in/api/users/${userId}`;
+
+    xhr.open('GET', url, true);
+    xhr.setRequestHeader('Accept', 'application/json');
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            const response = JSON.parse(xhr.responseText);
+            successCallback(response.data);
+        } else {
+            errorCallback('Failed to fetch user data. Status: ' + xhr.status);
         }
     };
-    // обработка ошибки
-    xhr.onerror = function (e) {
+    xhr.onerror = function(e) {
+        errorCallback('Failed to fetch user data. Error: ' + e);
+    };
+    xhr.send();
+}
+
+
+function editUser(userId) {
+    fetchUserById(
+        userId,
+        function(user) {
+            if (!user) {
+                console.error('User not found');
+                return;
+            }
+
+            const editFormContainer = document.getElementById('edit-user-form');
+            editFormContainer.style.display = 'block';
+
+            const editForm = document.getElementById('edit-form');
+            editForm.name.value = user.first_name;
+            editForm.surname.value = user.last_name;
+            editForm.email.value = user.email;
+
+            editForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                const updatedName = editForm.name.value.trim();
+                const updatedSurname = editForm.surname.value.trim();
+                const updatedEmail = editForm.email.value.trim();
+
+                const updatedUserData = {
+                    id: userId,
+                    first_name: updatedName,
+                    last_name: updatedSurname,
+                    email: updatedEmail
+                };
+
+                updateUser(updatedUserData);
+            });
+        },
+        function(error) {
+            console.error(error);
+        }
+    );
+}
+
+function updateUser(userData) {
+    const xhr = new XMLHttpRequest();
+    const url = `https://reqres.in/api/users/${userData.id}`;
+
+    xhr.open('PUT', url, true);
+    xhr.setRequestHeader('Content-type', 'application/json');
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            console.log('User updated successfully:', userData);
+        } else {
+            console.error('Failed to update user. Status:', xhr.status);
+        }
+    };
+    xhr.onerror = function(e) {
         console.log(e);
     };
-    // отправляем PUT-запрос на сервер с обновленными данными пользователя
-    xhr.send(JSON.stringify(updatedUserData));
+    xhr.send(JSON.stringify(userData));
 }
+
+
+
+
+
+
 
 // создаем функцию для удаления пользователя
 function deleteUser(userId) {
+    const xhr = new XMLHttpRequest();
     // составляем URL запроса для удаления конкретного пользователя
     const url = `https://reqres.in/api/users/${userId}`;
 
@@ -380,7 +479,7 @@ function deleteUser(userId) {
     // обработчик события onload, вызывается при получении ответа на запрос
     xhr.onload = function(e) {
         try {
-            if (xhr.status === 204) {
+            if (xhr.status === 200) {
                 //удаление карточки пользователя из списка на фронтенде
                 const deletedCard = document.querySelector(`.user-card[data-user-id="${userId}"]`);
                 if (deletedCard) {
@@ -388,8 +487,8 @@ function deleteUser(userId) {
                 }
                 console.log('User deleted:'); //ответ сервера после успешного удаления
             } else {
-                    console.error('Failed to delete user. Status:', xhr.status);
-                }
+                console.error('Failed to delete user. Status:', xhr.status);
+            }
 
         } catch (error) {
             console.warn('Error parsing JSON', error);
