@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="./style.css">
+
+    <script src="./utils/render-template.js" defer></script>
+    <script src="./utils/validation.js" defer></script>
+    <script src="./service/api.js" defer></script>
+    <script src="./components/login-component.js" defer></script>
+    <script src="./script.js" defer></script>
+
+    <title>Login with backend & Users List</title>
+</head>
+<body class="body">
+<div    class="wrapper">
+    <div class="container" id="container">
+        <div><p class="error-container"></p></div>
+        <div><p id="user-list"></p></div>
+
+<!--        <form class="form-edit " action="#" id="edit-user-form">-->
+<!--            <label class="edit-label" for="first-name">First name:</label>-->
+<!--            <input class="input-edit" type="text" autocomplete="email" id="first-name" name="first-name" required>-->
+
+<!--            <label class="edit-label" for="last-name">Last name:</label>-->
+<!--            <input class="input-edit"  type="text" id="last-name" name="last-name" required>-->
+
+<!--            <label class="edit-label" for="email">Email:</label>-->
+<!--            <input class="input-edit" type="email" id="email" name="email" required>-->
+
+<!--            <button class="btn-edit" id="btn-edit"  type="submit">Save</button>-->
+<!--        </form>-->
+
+    </div>
+
+
+<!--    <section class="user-list" id="user-list" >-->
+<!--        <div class="user-card">-->
+<!--            <p class="user-item">{{name}}</p>-->
+<!--            <p class="user-item">{{email}}</p>-->
+<!--            <p class="user-item user-img"><img src="" alt="{{name}}"/></p>-->
+<!--            <div class="user-actions">-->
+<!--                <button class="button edit-button" data-user-id="{{id}}">Edit</button>-->
+<!--                <button class="button delete-button" data-user-id="{{id}}">Delete</button>-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!--    </section>-->
+
+    <script type="text/html" id="user-card-template">
+        <div class="user-card">
+            <p class="user-item">{{name}}</p>
+            <p class="user-item">{{email}}</p>
+            <p class="user-item user-img"><img src="{{avatar}}" alt="{{name}}"/></p>
+            <div class="user-actions">
+                <button class="button edit-button" data-user-id="{{id}}">Edit</button>
+                <button class="button delete-button" data-user-id="{{id}}">Delete</button>
+            </div>
+        </div>
+    </script>
+
+    <script  type="text/html" id="login-template" >
+
+    <div id="loginForm">
+
+        <h1 class="header">User login form</h1>
+
+        <form class="form form-input-login form-input-password" id="login-form" action="#">
+
+            <label class="label-login" for="login">Login: </label>
+            <input class="input-login loginInput" type="email" autocomplete="email"
+                   name="login" id="login" placeholder="Enter login" required
+                   minlength="10" maxlength="50" size="50">
+
+            <label class="label-password" for="password">Password:</label>
+            <input class="input-password passwordInput" type="password" autocomplete="current-password"
+                   name="password" id="password" placeholder="Enter password" required
+                   minlength="5" maxlength="50" size="50">
+
+            <button class="button" type="submit" id="buttonPassword">Submit</button>
+
+        </form>
+    </div>
+
+    </script>
+<!--    <div class="btn-list" id="btn">-->
+<!--        <button class="button" id="prev-button">Prev</button>-->
+<!--        <button class="button" id="next-button">Next</button>-->
+<!--    </div>-->
+
+
+</div>
+
+</body>
+</html>
